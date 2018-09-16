@@ -18,4 +18,4 @@ class ExtraPetiteSpider(scrapy.Spider):
                 }
 
         next = response.css('div.nav-pagination').css('div.rvlv_alignright').css('a::attr(href)').extract()[0]
-        yield scrapy.Request(next, callback=self.parse)
+        yield scrapy.Request(next, meta={'dont_redirect': True}, callback=self.parse)
